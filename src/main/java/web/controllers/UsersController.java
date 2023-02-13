@@ -19,15 +19,15 @@ public class UsersController {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping()
     public String getAllUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
-        return "showUsers";
+        return "users/showUsers";
     }
 
     @GetMapping("/{id}")
     public String getUserById(@PathVariable("id") int id, Model model ) {
         model.addAttribute("user", userService.getUserById(id));
-        return "showUserById";
+        return "users/showUserById";
     }
 }
