@@ -2,6 +2,8 @@
 <body>
 <h2>Hello Username!</h2>
 
-<a href="/hello">To hell</a>
+<a href="first/hello">To hell</a>
+<br>
+<a href="/first/goodbye">To goodbye</a>
 </body>
 </html>

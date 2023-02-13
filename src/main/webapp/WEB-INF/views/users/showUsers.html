@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All users from list</title>
+</head>
+<body>
+<dif th:each = "user : ${users"}>
+    <a thhref = "@{/showUserById/{id}(id=${user.getId()})}" th:txt = "${user.getName}">user</a>
+</dif>
+</body>
+</html>
