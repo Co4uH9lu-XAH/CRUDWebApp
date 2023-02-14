@@ -19,7 +19,18 @@ public class UserServiceImp implements UserService{
         this.userDao = userDao;
     }
 
-
+    @Override
+    public void addUser() {
+        userDao.addUser();
+    }
+    @Override
+    public void updateUser(int id) {
+        userDao.updateUser(id);
+    }
+    @Override
+    public void removeUser(int id) {
+        userDao.removeUser(id);
+    }
     @Override
     public List<User> getAllUsers() {
         return userDao.getAllUsers();

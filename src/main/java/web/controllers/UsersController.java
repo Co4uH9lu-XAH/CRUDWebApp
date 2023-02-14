@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import web.service.UserService;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping()
 public class UsersController {
 
     private final UserService userService;
@@ -20,14 +20,18 @@ public class UsersController {
     }
 
     @GetMapping()
+    public String showStartPage() {
+        return "first/start-page";
+    }
+    @GetMapping("/showUsers")
     public String getAllUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
-        return "users/showUsers";
+        return "users/show-users";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("show-user/{id}")
     public String getUserById(@PathVariable("id") int id, Model model ) {
         model.addAttribute("user", userService.getUserById(id));
-        return "users/showUserById";
+        return "users/show-user";
     }
 }
