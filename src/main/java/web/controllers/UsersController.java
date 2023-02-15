@@ -3,9 +3,8 @@ package web.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import web.models.User;
 import web.service.UserService;
 
 @Controller
@@ -23,6 +22,7 @@ public class UsersController {
     public String showStartPage() {
         return "first/start-page";
     }
+
     @GetMapping("/showUsers")
     public String getAllUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
@@ -30,8 +30,32 @@ public class UsersController {
     }
 
     @GetMapping("show-user/{id}")
-    public String getUserById(@PathVariable("id") int id, Model model ) {
-        model.addAttribute("user", userService.getUserById(id));
+    public String getUser(@PathVariable("id") int id, Model model ) {
+        model.addAttribute("user", userService.getUser(id));
         return "users/show-user";
+    }
+
+    @GetMapping("/newUser")
+    public String newUser(Model model) {
+        model.addAttribute("user", new User());
+        return "/users/new-user";
+    }
+
+    @PostMapping("/user-create")
+    public String addUser(@ModelAttribute("user") User user) {
+        userService.addUser(user);
+        return "redirect:/showUsers";
+    }
+
+    @GetMapping("show-user/{id}/edit")
+    public String editUser(@PathVariable ("id") int id, Model model) {
+        model.addAttribute("user", userService.getUser(id));
+        return "/users/edit-user";
+    }
+
+    @PatchMapping("/{id}")
+    public String updateUser(@ModelAttribute User user, @PathVariable("id") int id) {
+        userService.updateUser(id, user);
+        return "redirect:/showUsers";
     }
 }

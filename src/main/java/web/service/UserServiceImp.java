@@ -20,12 +20,12 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public void addUser() {
-        userDao.addUser();
+    public void addUser(User user) {
+        userDao.addUser(user);
     }
     @Override
-    public void updateUser(int id) {
-        userDao.updateUser(id);
+    public void updateUser(int id, User user) {
+        userDao.updateUser(id, user);
     }
     @Override
     public void removeUser(int id) {
@@ -37,7 +37,7 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public User getUserById(int id) {
-        return userDao.getUserById(id);
+    public User getUser(int id) {
+        return userDao.getUser(id);
     }
 }

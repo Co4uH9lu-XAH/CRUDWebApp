@@ -20,12 +20,17 @@ public class UserDAOImp implements UserDAO {
     }
 
     @Override
-    public void addUser() {
-
+    public void addUser(User user) {
+        user.setId(++id);
+        users.add(user);
     }
 
     @Override
-    public void updateUser(int id) {
+    public void updateUser(int id, User user) {
+        User updatedUser = getUser(id);
+        updatedUser.setName(user.getName());
+        updatedUser.setSurname(user.getSurname());
+        updatedUser.setAge(user.getAge());
 
     }
 
@@ -40,7 +45,7 @@ public class UserDAOImp implements UserDAO {
     }
 
     @Override
-    public User getUserById(int id) {
+    public User getUser(int id) {
         return users.stream().filter(user -> user.getId() == id).findAny().orElse(null);
     }
 }
