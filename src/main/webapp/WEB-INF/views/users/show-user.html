@@ -9,8 +9,7 @@
 <p th:text="${user.getSurname()}">surname</p>
 
 <br><br>
-
-<a href="@{{id}(id=${user.getId()})}/edit">Edit user</a>
+<a th:href="@{/{id}/edit (id=${user.getId()})}">Edit</a>
 
 <br><br>
 

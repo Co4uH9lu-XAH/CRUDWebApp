@@ -36,7 +36,7 @@ public class UserDAOImp implements UserDAO {
 
     @Override
     public void removeUser(int id) {
-        users.remove(users.stream().filter(user -> user.getId() == id).findAny().orElse(null));
+        users.removeIf(user -> user.getId() == id);
     }
 
     @Override
