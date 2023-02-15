@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import web.models.User;
 import web.service.UserService;
 
+import javax.jws.WebParam;
+
 @Controller
 @RequestMapping()
 public class UsersController {
@@ -56,6 +58,12 @@ public class UsersController {
     @PatchMapping("/{id}")
     public String updateUser(@ModelAttribute User user, @PathVariable("id") int id) {
         userService.updateUser(id, user);
+        return "redirect:/showUsers";
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteUser(@PathVariable("id") int id) {
+        userService.removeUser(id);
         return "redirect:/showUsers";
     }
 }
