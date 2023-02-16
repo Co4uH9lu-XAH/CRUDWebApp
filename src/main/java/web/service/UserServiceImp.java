@@ -9,7 +9,6 @@ import web.models.User;
 
 import java.util.List;
 
-@Component
 @Service
 public class UserServiceImp implements UserService{
 
