@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import web.models.User;
 import web.service.UserService;
 
-import javax.jws.WebParam;
-
 @Controller
 @RequestMapping()
 public class UsersController {

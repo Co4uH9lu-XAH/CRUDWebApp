@@ -53,12 +53,6 @@ public class AppConfig {
         return properties;
     }
 
-    private HibernateJpaVendorAdapter vendorAdaptor() {
-        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setShowSql(true);
-        return vendorAdapter;
-    }
-
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
@@ -77,4 +71,5 @@ public class AppConfig {
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
         return transactionManager;
     }
+
 }

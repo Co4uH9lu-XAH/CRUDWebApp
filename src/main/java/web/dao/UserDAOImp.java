@@ -1,13 +1,12 @@
 package web.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Controller;
 import web.models.User;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@Repository
+@Controller
 public class UserDAOImp implements UserDAO {
 
 
@@ -18,21 +17,8 @@ public class UserDAOImp implements UserDAO {
         this.entityManager = entityManager;
     }
 
-//    private int id;
-//    private List<User> users;
-//
-//    {
-//        users = new ArrayList<>();
-//        users.add(new User(++id, "Wooden", "Worm", 30));
-//        users.add(new User(++id, "Sweaty", "Beast", 70));
-//        users.add(new User(++id, "Co4UH9IU-XAH", "Unknown", 39));
-//        users.add(new User(++id, "Good", "Beetle", 55));
-//    }
-
     @Override
     public void addUser(User user) {
-//        user.setId(++id);
-//        users.add(user);
         entityManager.persist(user);
     }
 
